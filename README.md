@@ -5,8 +5,6 @@
 # SharpDate
 > DateTime a la .NET/C# Style in GoLang
 
-https://i.imgur.com/FFTTmiD.png
-
 ## Setting up
 ```sh
 go get github.com/GTANAdam/SharpDate
