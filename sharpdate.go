@@ -8,17 +8,28 @@ import (
 
 // DateTime Represents an instant in time, typically expressed as a date and time of day.
 //
+//
 // Arguments:
+//
 // year: int
+//
 // month: int
+//
 // day: int
+//
 // hour: int
+//
 // min: int
+//
 // sec: int
+//
 // nsec: int
+//
 // location: *time.Location
 //
+//
 // Properties:
+//
 // Time: time.Time
 type DateTime struct {
 	Year     int
@@ -79,57 +90,54 @@ var (
 // ToString converts the value of the current DateTime instance to its equivalent string representation using the specified format.
 //
 // Avaialble formats:
+//
 // dddd: day string. example: Monday
+//
 // ddd:  short day string, example: Mon
+//
 // dd:   day number, from 01 to (end of month). example: 02
+//
 // d:    day number, from 1 to (end of month). example: 2
+//
 // MMMM: month string. example: January
+//
 // MMM:  short month string. example: Jan
+//
 // MM:   month number, from 01 to 12. example: 01
+//
 // M:    month number, from 1 to 12. example: 1
+//
 // yyyy: year. example: 2006
+//
 // yy:   year, last 2 digits. example: 06
+//
 // HH:   hours, from 00 to 23. example: 15
+//
 // hh:   hours, from 01 to 12. example: 03
+//
 // h:    hours, from 0 to 12. example: 3
+//
 // mm:   minutes. example: 04
+//
 // m:    minutes. example: 4
+//
 // ss:   seconds. example: 05
+//
 // s:    seconds. example: 5
+//
 // f:	 milliseconds. example: .000
+//
 // ff:	 microseconds. example: .999999
+//
 // tt:	 meridian designation. example: pm/am
+//
 // TT:	 meridian designation. example: PM/AM
+//
 // Z: 	 Timezone. example: MST
+//
 // zz:	 Timezone offset. example: -07
+//
 // zzz:	 Timezone offset. example: -07:00
-
-/* Avaialble formats:
-dddd: day string. example: Monday
-ddd:  short day string, example: Mon
-dd:   day number, from 01 to (end of month). example: 02
-d:    day number, from 1 to (end of month). example: 2
-MMMM: month string. example: January
-MMM:  short month string. example: Jan
-MM:   month number, from 01 to 12. example: 01
-M:    month number, from 1 to 12. example: 1
-yyyy: year. example: 2006
-yy:   year, last 2 digits. example: 06
-HH:   hours, from 00 to 23. example: 15
-hh:   hours, from 01 to 12. example: 03
-h:    hours, from 0 to 12. example: 3
-mm:   minutes. example: 04
-m:    minutes. example: 4
-ss:   seconds. example: 05
-s:    seconds. example: 5
-f:	    milliseconds. example: .000
-ff:	 microseconds. example: .999999
-tt:	 meridian designation. example: pm/am
-TT:	 meridian designation. example: PM/AM
-Z: 	 Timezone. example: MST
-zz:	 Timezone offset. example: -07
-zzz:	 Timezone offset. example: -07:00
-*/
 func (d DateTime) ToString(resultFormat string) string {
 	regex := regexp.MustCompile(`(?m)(M{4})|(M{3})|(M{2})|(M{1})|(y{4})|(y{2})|(D{2})|(D{1})|(d{2})|(d{1})|(H{2})|(h{2})|(h{1})|(m{2})|(m{1})|(s{2})|(s{1}|(f{2})|(f{1})|(TT{1})|(tt{1})|(Z{1})|(zzz{1})|(zz{1}))`)
 	for _, match := range regex.FindAllString(resultFormat, -1) {
@@ -154,10 +162,15 @@ func (d DateTime) ToString(resultFormat string) string {
 // New function returns a DateTime instance from specified date and/or time values
 //
 // Overloads:
+//
 // New(year, month, day)
+//
 // New(year, month, day, hours)
+//
 // New(year, month, day, hours, minutes)
+//
 // New(year, month, day, hours, minutes, seconds)
+//
 // New(year, month, day, hours, minutes, seconds, nanoseconds)
 func (DateTime) New(args ...interface{}) *DateTime {
 	var d DateTime
@@ -181,10 +194,15 @@ func (DateTime) New(args ...interface{}) *DateTime {
 // NewDateTime function returns a DateTime instance from specified date and/or time values
 //
 // Overloads:
+//
 // NewDateTime(year, month, day)
+//
 // NewDateTime(year, month, day, hours)
+//
 // NewDateTime(year, month, day, hours, minutes)
+//
 // NewDateTime(year, month, day, hours, minutes, seconds)
+//
 // NewDateTime(year, month, day, hours, minutes, seconds, nanoseconds)
 func NewDateTime(args ...interface{}) *DateTime {
 	return DateTime{}.New(args...)
