@@ -1,101 +1,121 @@
-
 <p align="center" >
-    <img width="500" src ="https://i.imgur.com/AqveQES.png" />
+    <img width="256" src ="https://i.imgur.com/FFTTmiD.png" />
 </p>
 
-# Kair
-> Date and Time - Golang Formatting Library
+# SharpDate
+> DateTime a la .NET/C# Style in GoLang
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Go Report Card](https://goreportcard.com/badge/github.com/GuilhermeCaruso/Kair)](https://goreportcard.com/report/github.com/GuilhermeCaruso/Kair) [![codecov](https://codecov.io/gh/GuilhermeCaruso/Kair/branch/master/graph/badge.svg)](https://codecov.io/gh/GuilhermeCaruso/Kair) [![Build Status](https://travis-ci.com/GuilhermeCaruso/Kair.svg?branch=master)](https://travis-ci.com/GuilhermeCaruso/Kair) ![GitHub](https://img.shields.io/badge/golang%20->=1.6.3-blue.svg) [![GoDoc](https://godoc.org/github.com/GuilhermeCaruso/Kair?status.svg)](https://godoc.org/github.com/GuilhermeCaruso/Kair)
+https://i.imgur.com/FFTTmiD.png
 
-## Setup
-
-To get Kair
-
-##### > Go CLI
+## Setting up
 ```sh
-go get github.com/GuilhermeCaruso/Kair
-```
-##### > Go DEP
-```sh
-dep ensure -add github.com/GuilhermeCaruso/Kair
-```
-##### > Govendor
-```sh
-govendor fetch github.com/GuilhermeCaruso/Kair
+go get github.com/GTANAdam/sharpdate
 ```
 
-## Example
+## Quickstart
+The usage is quite easy and resembles .NET
+#### Importing package
+Before we continue, importing the package correctly is quite important as it involves a small trick in order to omit the use of package name.
+
+Add just underneath the package name
+```go
+import . "github.com/GTANAdam/sharpdate"
+```
+
+## Usage Examples:
 ```go
 package main
 
-import (
-	"fmt"
-
-	k "github.com/GuilhermeCaruso/Kair"
-)
+import "fmt"
+import . "github.com/GTANAdam/sharpdate"
 
 func main() {
-	now := k.Now()
-
-    fmt.Printf("Right now is %s \n", now.CustomFormat("dd/MM/YYYY hh:mm:ss"))
-
-	date := k.Date(29, 05, 1980)
-
-	fmt.Printf("The %s was a %s in %s\n",
-		date.Format("L"),
-		date.CustomFormat("DD"),
-        date.CustomFormat("MMMM")) //The 29/05/1980 was a Thursday in May 
+	e := DateTime{}.Now().ToString("dd-MM-yyyy HH:mm:ss")
+	fmt.println(e) // Returns current time, i.e: // 17-05-2018 23:55:22
+	
+	e = DateTime{}.New(2018, 1, 17).ToString("dd/MMMM/yyyy")
+	fmt.println(e) // 17/January/2018
+	
+	e = NewDateTime(2018, 1, 17, 15, 5, 2).ToString("dd/MMMM/yyyy h:m:s TT")
+	fmt.println(e) // 17/January/2018 3:5:2 PM
+	
+	e = DateTime{Year: 2018, Month: 5, Day: 17}.ToString("dd-MM-yyyy")
+	fmt.println(e) // 17-05-2018
+	
+	e = DateTime{}
+	e.Year = 2018
+	e.Month = 5
+	e.Day = 17
+	fmt.println(e.ToString("dd-MM-yyyy")) // 17-05-2018
+	
+	e = DateTime{}.New(2018, 1, 17).AddMonths(2).AddDays(5).AddMinutes(10)
+	fmt.println(e.ToString("dd-MM-yyyy HH:mm")) // Result: 22-03-2018 00:10
 }
 
 ```
+## Available functions:
+```go
+Now()
+New(year, month, day)
+NewDateTime(year, month, day)
 
-## Formatters
-- Standard
-```sh
-    "LT":   10:20 AM,
-    "LTS":  10:20:00 AM,
-    "L":    20/05/2018,
-    "l":    20/5/2018,
-    "LL":   May 20, 2018,
-    "ll":   May 20, 2018,
-    "LLL":  May 20, 2018 10:20 AM,
-    "lll":  May 20, 2018 10:20 AM,
-    "LLLL": Sunday, May 20, 2018 10:20 AM,
-    "llll": Sun, May 20, 2018 10:20 AM,
-    "":     2018-05-20 10:20:00 +0000 UTC,
+New(year, month, day, hours)
+NewDateTime(year, month, day, hours)
+
+New(year, month, day, hours, minutes)
+NewDateTime(year, month, day, hours, minutes)
+
+New(year, month, day, hours, minutes, seconds)
+NewDateTime(year, month, day, hours, minutes, seconds)
+
+New(year, month, day, hours, minutes, seconds, nanoseconds)
+NewDateTime(year, month, day, hours, minutes, seconds, nanoseconds)
+
+Add(years, months, days)
+Subtract(years, months, days)
+AddDays(value)
+AddMonths(value)
+AddYears(value)
+
+
+AddTime(hours, minutes, seconds)
+SubtractTime(hours, minutes, seconds)
+AddHours(value)
+AddMinutes(value)
+AddSeconds(value)
+AddMilliseconds(value)
+AddMicroseconds(value)
 ```
 
-- Custom
+
+## Available formats
 ```sh
-    "MMMM": Long Month,
-    "MMM":  Month,
-    "MM":   Zero Number Month,
-    "M":    Number Month,
-    "YYYY": Long Year,
-    "YY":   Year,
-    "DD":   Long Day,
-    "D":    Day,
-    "dd":   Long Number Day,
-    "d":    Number Day,
-    "hh":   Long Hour,
-    "h":    Hour,
-    "mm":   Long Minute,
-    "m":    Minute,
-    "ss":   Long Second,
-    "s":    Second
+dddd: day string. example: Monday
+ddd:  short day string, example: Mon
+dd:   day number, from 01 to (end of month). example: 02
+d:    day number, from 1 to (end of month). example: 2
+MMMM: month string. example: January
+MMM:  short month string. example: Jan
+MM:   month number, from 01 to 12. example: 01
+M:    month number, from 1 to 12. example: 1
+yyyy: year. example: 2006
+yy:   year, last 2 digits. example: 06
+HH:   hours, from 00 to 23. example: 15
+hh:   hours, from 01 to 12. example: 03
+h:    hours, from 0 to 12. example: 3
+mm:   minutes. example: 04
+m:    minutes. example: 4
+ss:   seconds. example: 05
+s:    seconds. example: 5
+f:    milliseconds. example: .000
+ff:   microseconds. example: .999999
+tt:   meridian designation. example: pm/am
+TT:   meridian designation. example: PM/AM
+Z:    Timezone. example: MST
+zz:   Timezone offset. example: -07
+zzz:  Timezone offset. example: -07:00
 ```
-
-## Contributing
-Please feel free to make suggestions, create issues, fork the repository and send pull requests!
-
-## To do:
-- [X] Implement Standard Format
-- [X] Implement Custom Format
-- [X] Implement Now(), Date() and DateTime() initializers
-- [ ] Implement Relative Time (FromNow, StartOf ...)
-- [ ] Implement CalendarTime (add, subtract, calendar)
 
 ## License
-
 MIT License © Guilherme Caruso
+MIT License © GTANAdam
