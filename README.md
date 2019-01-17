@@ -19,7 +19,7 @@ Before we continue, importing the package correctly is quite important as it inv
 
 Add just underneath the package name
 ```go
-import . "github.com/GTANAdam/sharpdate"
+import . "github.com/GTANAdam/SharpDate"
 ```
 
 ## Usage Examples:
@@ -27,7 +27,7 @@ import . "github.com/GTANAdam/sharpdate"
 package main
 
 import "fmt"
-import . "github.com/GTANAdam/sharpdate"
+import . "github.com/GTANAdam/SharpDate"
 
 func main() {
 	e := DateTime{}.Now().ToString("dd-MM-yyyy HH:mm:ss")
