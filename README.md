@@ -30,7 +30,7 @@ import "fmt"
 import . "github.com/GTANAdam/SharpDate"
 
 func main() {
-		e := DateTime{}.Now().ToString("dd-MM-yyyy HH:mm:ss")
+	e := DateTime{}.Now().ToString("dd-MM-yyyy HH:mm:ss")
 	fmt.Println(e) // Returns current time, i.e: 17-05-2018 23:55:22
 
 	e = DateTime{}.New(2018, 1, 17).ToString("dd/MMMM/yyyy")
