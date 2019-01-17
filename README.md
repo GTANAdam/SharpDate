@@ -30,30 +30,30 @@ import "fmt"
 import . "github.com/GTANAdam/SharpDate"
 
 func main() {
-	e := DateTime{}.Now().ToString("dd-MM-yyyy HH:mm:ss")
+		e := DateTime{}.Now().ToString("dd-MM-yyyy HH:mm:ss")
 	fmt.Println(e) // Returns current time, i.e: 17-05-2018 23:55:22
-	
+
 	e = DateTime{}.New(2018, 1, 17).ToString("dd/MMMM/yyyy")
 	fmt.Println(e) // 17/January/2018
-	
+
 	e = NewDateTime(2018, 1, 17, 15, 5, 2).ToString("dd/MMMM/yyyy h:m:s TT")
 	fmt.Println(e) // 17/January/2018 3:5:2 PM
-	
+
 	e = DateTime{Year: 2018, Month: 5, Day: 17}.ToString("dd-MM-yyyy")
 	fmt.Println(e) // 17-05-2018
-	
-	e = DateTime{}
-	e.Year = 2018
-	e.Month = 5
-	e.Day = 17
-	fmt.Println(e.ToString("dd-MM-yyyy")) // 17-05-2018
-	
-	e = DateTime{}.New(2018, 1, 17).AddMonths(2).AddDays(5).AddMinutes(10)
-	fmt.Println(e.ToString("dd-MM-yyyy HH:mm")) // Result: 22-03-2018 00:10
-	
+
+	d := DateTime{}
+	d.Year = 2018
+	d.Month = 5
+	d.Day = 17
+	fmt.Println(d.ToString("dd-MM-yyyy")) // 17-05-2018
+
+	b := DateTime{}.New(2018, 1, 17).AddMonths(2).AddDays(5).AddMinutes(10)
+	fmt.Println(b.ToString("dd-MM-yyyy HH:mm")) // Result: 22-03-2018 00:10
+
 	// Time struct from time package is accessible through DateTime as well
-	e = DateTime{}.Now().Time.Unix()
-	fmt.Println(e) // Result example: 1547764521
+	v := DateTime{}.Now().Time.Unix()
+	fmt.Println(v) // Result example: 1547764521
 }
 
 ```
