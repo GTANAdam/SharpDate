@@ -9,7 +9,7 @@ https://i.imgur.com/FFTTmiD.png
 
 ## Setting up
 ```sh
-go get github.com/GTANAdam/sharpdate
+go get github.com/GTANAdam/SharpDate
 ```
 
 ## Quickstart
