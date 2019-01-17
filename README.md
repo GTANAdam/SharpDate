@@ -56,6 +56,7 @@ func main() {
 ## Available functions:
 ```go
 Now()
+
 New(year, month, day)
 NewDateTime(year, month, day)
 
