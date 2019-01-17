@@ -6,9 +6,9 @@ import (
 	"time"
 )
 
-// **DateTime** Represents an instant in time, typically expressed as a date and time of day.
+// DateTime Represents an instant in time, typically expressed as a date and time of day.
 //
-// **Arguments:**
+// Arguments:
 //
 // year: int
 //
@@ -26,7 +26,7 @@ import (
 //
 // location: *time.Location
 //
-// **Properties:**
+// Properties:
 //
 // Time: time.Time
 type DateTime struct {
@@ -85,9 +85,9 @@ var (
 	}
 )
 
-// **ToString** converts the value of the current DateTime instance to its equivalent string representation using the specified format.
+// ToString converts the value of the current DateTime instance to its equivalent string representation using the specified format.
 //
-// **Avaialble formats:**
+// Avaialble formats:
 //
 // dddd: day string. example: Monday
 //
@@ -157,9 +157,9 @@ func (d DateTime) ToString(resultFormat string) string {
 	return d.Time.Format(resultFormat)
 }
 
-// **New function** returns a DateTime instance from specified date and/or time values
+// New function returns a DateTime instance from specified date and/or time values
 //
-// **Overloads:**
+// Overloads:
 //
 // New(year, month, day)
 //
@@ -189,9 +189,9 @@ func (DateTime) New(args ...interface{}) *DateTime {
 	return &d
 }
 
-// **NewDateTime** function returns a DateTime instance from specified date and/or time values
+// NewDateTime function returns a DateTime instance from specified date and/or time values
 //
-// **Overloads:**
+// Overloads:
 //
 // NewDateTime(year, month, day)
 //
@@ -206,67 +206,67 @@ func NewDateTime(args ...interface{}) *DateTime {
 	return DateTime{}.New(args...)
 }
 
-// **Now** function returns DateTime instance from specified date and/or time values
+// Now function returns DateTime instance from specified date and/or time values
 func (DateTime) Now() *DateTime {
 	return &DateTime{Time: time.Now()}
 }
 
-// **Add** Returns a new DateTime that adds the value of the specified date values to the value of this instance.
+// Add Returns a new DateTime that adds the value of the specified date values to the value of this instance.
 func (d DateTime) Add(years, months, days int) *DateTime {
 	return &DateTime{Time: d.Time.AddDate(years, months, days)}
 }
 
-// **AddDays** Returns a new DateTime that adds the specified number of days to the value of this instance.
+// AddDays Returns a new DateTime that adds the specified number of days to the value of this instance.
 func (d DateTime) AddDays(value int) *DateTime {
 	return &DateTime{Time: d.Time.AddDate(0, 0, value)}
 }
 
-// **AddMonths** Returns a new DateTime that adds the specified number of months to the value of this instance.
+// AddMonths Returns a new DateTime that adds the specified number of months to the value of this instance.
 func (d DateTime) AddMonths(value int) *DateTime {
 	return &DateTime{Time: d.Time.AddDate(0, value, 0)}
 }
 
-// **AddYears** Returns a new DateTime that adds the specified number of years to the value of this instance.
+// AddYears Returns a new DateTime that adds the specified number of years to the value of this instance.
 func (d DateTime) AddYears(value int) *DateTime {
 	return &DateTime{Time: d.Time.AddDate(value, 0, 0)}
 }
 
-// **AddTime** Returns a new DateTime that adds the specified time values to the value of this instance.
+// AddTime Returns a new DateTime that adds the specified time values to the value of this instance.
 func (d DateTime) AddTime(hours, minutes, seconds int) *DateTime {
 	return &DateTime{Time: d.Time.Add(time.Hour*time.Duration(hours) + time.Minute*time.Duration(minutes) + time.Second*time.Duration(seconds))}
 }
 
-// **AddHours** Returns a new DateTime that adds the specified number of hours to the value of this instance.
+// AddHours Returns a new DateTime that adds the specified number of hours to the value of this instance.
 func (d DateTime) AddHours(value int) *DateTime {
 	return &DateTime{Time: d.Time.Add(time.Hour * time.Duration(value))}
 }
 
-// **AddMinutes** Returns a new DateTime that adds the specified number of minutes to the value of this instance.
+// AddMinutes Returns a new DateTime that adds the specified number of minutes to the value of this instance.
 func (d DateTime) AddMinutes(value int) *DateTime {
 	return &DateTime{Time: d.Time.Add(time.Minute * time.Duration(value))}
 }
 
-// **AddSeconds** Returns a new DateTime that adds the specified number of seconds to the value of this instance.
+// AddSeconds Returns a new DateTime that adds the specified number of seconds to the value of this instance.
 func (d DateTime) AddSeconds(value int) *DateTime {
 	return &DateTime{Time: d.Time.Add(time.Second * time.Duration(value))}
 }
 
-// **AddMilliseconds** Returns a new DateTime that adds the specified number of milliseconds to the value of this instance.
+// AddMilliseconds Returns a new DateTime that adds the specified number of milliseconds to the value of this instance.
 func (d DateTime) AddMilliseconds(value int) *DateTime {
 	return &DateTime{Time: d.Time.Add(time.Millisecond * time.Duration(value))}
 }
 
-// **AddMicroseconds** Returns a new DateTime that adds the specified number of microseconds to the value of this instance.
+// AddMicroseconds Returns a new DateTime that adds the specified number of microseconds to the value of this instance.
 func (d DateTime) AddMicroseconds(value int) *DateTime {
 	return &DateTime{Time: d.Time.Add(time.Microsecond * time.Duration(value))}
 }
 
-// **Subtract** Returns a new DateTime that subtracts the specified date values from the value of this instance.
+// Subtract Returns a new DateTime that subtracts the specified date values from the value of this instance.
 func (d DateTime) Subtract(years, months, days int) *DateTime {
 	return &DateTime{Time: d.Time.AddDate(-years, -months, -days)}
 }
 
-// **SubtractTime** Returns a new DateTime that subtracts the specified time values from the value of this instance.
+// SubtractTime Returns a new DateTime that subtracts the specified time values from the value of this instance.
 func (d DateTime) SubtractTime(hours, minutes, seconds int) *DateTime {
 	return &DateTime{Time: d.Time.Add(-(time.Hour*time.Duration(hours) + time.Minute*time.Duration(minutes) + time.Second*time.Duration(seconds)))}
 }
