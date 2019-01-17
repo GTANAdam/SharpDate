@@ -53,7 +53,7 @@ func main() {
 	
 	// Time struct from time package is accessible through DateTime as well
 	e = DateTime{}.Now().Time.Unix()
-	fmt.Println() // Result example: 1547764521
+	fmt.Println(e) // Result example: 1547764521
 }
 
 ```
