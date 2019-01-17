@@ -50,6 +50,10 @@ func main() {
 	
 	e = DateTime{}.New(2018, 1, 17).AddMonths(2).AddDays(5).AddMinutes(10)
 	fmt.Println(e.ToString("dd-MM-yyyy HH:mm")) // Result: 22-03-2018 00:10
+	
+	// Time struct from time package is accessible through DateTime as well
+	e = DateTime{}.Now().Time.Unix()
+	fmt.Println() // Result example: 1547764521
 }
 
 ```
