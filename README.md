@@ -40,7 +40,7 @@ func main() {
 	e = DateTime{Year: 2018, Month: 5, Day: 17}.ToString("dd-MM-yyyy")
 	fmt.Println(e) // 17-05-2018
 
-	d := DateTime{}
+	d := new(DateTime)
 	d.Year = 2018
 	d.Month = 5
 	d.Day = 17
